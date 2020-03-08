@@ -29,3 +29,18 @@ def romanToInt(s):
         rlt = rlt - map.get(s[i]) if map.get(s[i]) < map.get(s[i+1]) else rlt + map.get(s[i])
 
     return rlt + map.get(s[-1])
+
+
+# 14 Longest Common Prefix
+# 查找字符串(只包含小写字母a-z)数组中的最长公共前缀，不存在返回""
+def longestCommonPrefix(strs):
+    size = len(strs)
+    if size == 0:
+        return ''
+
+    s = strs[0]
+    for i in range(1, size):
+        while strs[i].find(s) < 0:
+            s = s[:-1]
+
+    return s
