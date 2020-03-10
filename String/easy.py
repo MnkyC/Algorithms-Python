@@ -44,3 +44,34 @@ def longestCommonPrefix(strs):
             s = s[:-1]
 
     return s
+
+
+'''
+20 Valid Parentheses
+给定一个只包含(, ), {, }, [, ]的字符串，判断字符串是否有效
+有效字符串必须满足
+    左括号用相同类型的右括号闭合
+    左括号以正确顺序闭合
+空字符串是有效字符串
+'''
+def isValid(s):
+    size = len(s)
+
+    if size == 0:
+        return True
+
+    if size % 2 != 0:
+        print(111)
+        return False
+
+    mapping = {'(': ')', '{': '}', '[': ']'}
+    stack = ['#']
+
+    for c in s:
+        if c in mapping:
+            stack.append(c)
+        else:
+            if mapping[stack.pop()] != c:
+                return False
+
+    return len(stack) == 1
